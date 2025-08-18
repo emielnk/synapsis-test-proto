@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package inventory;
+
+option go_package = "inventory.proto";
+
+service Inventory {
+    rpc UpdateProductStock (UpdateProductStockRequest) returns (ProductResponse) {}
+    rpc UpdateProduct (ProductMasterRequest) returns (ProductResponse) {}
+    rpc UpdateProductStatus (ProductMasterRequest) returns (ProductResponse) {}
+    rpc AddProduct (ProductMasterRequest) returns (ProductResponse) {}
+    rpc CheckProductStock (CheckProductStockRequest) returns (CheckProductStockResponse) {}
+    rpc ReserveProduct (ReserveProductRequest) returns (ReserveProductResponse) {}
+    rpc ReleaseProduct (ReleaseProductRequest) returns (ReleaseProductResponse) {}
+
+}
+
+message ProductMasterRequest {
+    int64 ProductID = 1;
+    string Name = 2;
+    string Category = 3;
+    int64 Stock = 4;
+    int64 Status = 5;
+    int64 Price = 6;
+}
+message UpdateProductStockRequest {
+    int64 ProductID = 1;
+    int64 Stock = 2;
+}
+message ProductResponse {
+    int64 ProductID = 1;
+    string Name = 2;
+    string Category = 3;
+    int64 Stock = 4;
+    int64 Status = 5;
+    string Message = 6;
+    int64 Price = 7;
+    BaseResponse BaseResponse = 8;
+}
+message CheckProductStockRequest {
+    int64 ProductID = 1;
+}
+message CheckProductStockResponse {
+    int64 ProductID = 1;
+    int64 Stock = 2;
+    BaseResponse BaseResponse = 3;
+}
+message ReserveProductRequest {
+    int64 ProductID = 1;
+    int64 UserID = 2;
+    int64 Count = 3;
+    int64 OrderID = 4;
+}
+message ReserveProductResponse {
+    int64 ProductID = 1;
+    string Message = 2;
+    int64 ReserveStatus = 3;
+    int64 ReserveCount = 4;
+    BaseResponse BaseResponse = 6;
+}
+message ReleaseProductRequest {
+    int64 ProductID = 1;
+    int64 UserID = 2;
+}
+message ReleaseProductResponse {
+    int64 ProductID = 1;
+    string Message = 2;
+    BaseResponse BaseResponse = 3;
+}
+message BaseResponse  {
+    int64 RPCStatus = 1;
+    string Message = 2;
+    string ErrorMessage = 3;
+    string DisplayErrorMessage = 4;
+}
+

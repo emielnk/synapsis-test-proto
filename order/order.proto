@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package order;
+
+option go_package = "order.proto";
+
+service Order {
+    rpc DoOrder (DoOrderRequest) returns (DoOrderResponse) {}
+}
+
+message DoOrderRequest {
+    int64 ProductID = 1;
+    string ProductName = 2;
+    int64 UserID = 3;
+     int64 Quantity = 4;
+}
+message DoOrderResponse {
+    int64 OrderID = 1;
+    int64 Status = 2;
+    string Message = 3;
+    BaseResponse BaseResponse = 4;
+}
+message BaseResponse  {
+    int64 RPCStatus = 1;
+    string ErrorMessage = 2;
+    string DisplayErrorMessage = 3;
+}
