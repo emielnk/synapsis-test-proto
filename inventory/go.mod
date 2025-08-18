@@ -1,4 +1,4 @@
-module emielnk/Synapsis-Test/proto/inventory
+module github.com/emielnk/synapsis-test-proto/inventory
 
 go 1.24.4
 

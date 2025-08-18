@@ -1,4 +1,4 @@
-module emielnk/Synapsis-Test/proto/order
+module github.com/emielnk/synapsis-test-proto/order
 
 go 1.24.4
 
