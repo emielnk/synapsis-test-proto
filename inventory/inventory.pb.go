@@ -509,6 +509,7 @@ type ReleaseProductRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProductID     int64                  `protobuf:"varint,1,opt,name=ProductID,proto3" json:"ProductID,omitempty"`
 	UserID        int64                  `protobuf:"varint,2,opt,name=UserID,proto3" json:"UserID,omitempty"`
+	OrderID       int64                  `protobuf:"varint,3,opt,name=OrderID,proto3" json:"OrderID,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -553,6 +554,13 @@ func (x *ReleaseProductRequest) GetProductID() int64 {
 func (x *ReleaseProductRequest) GetUserID() int64 {
 	if x != nil {
 		return x.UserID
+	}
+	return 0
+}
+
+func (x *ReleaseProductRequest) GetOrderID() int64 {
+	if x != nil {
+		return x.OrderID
 	}
 	return 0
 }
@@ -725,10 +733,11 @@ const file_inventory_proto_rawDesc = "" +
 	"\aMessage\x18\x02 \x01(\tR\aMessage\x12$\n" +
 	"\rReserveStatus\x18\x03 \x01(\x03R\rReserveStatus\x12\"\n" +
 	"\fReserveCount\x18\x04 \x01(\x03R\fReserveCount\x12;\n" +
-	"\fBaseResponse\x18\x06 \x01(\v2\x17.inventory.BaseResponseR\fBaseResponse\"M\n" +
+	"\fBaseResponse\x18\x06 \x01(\v2\x17.inventory.BaseResponseR\fBaseResponse\"g\n" +
 	"\x15ReleaseProductRequest\x12\x1c\n" +
 	"\tProductID\x18\x01 \x01(\x03R\tProductID\x12\x16\n" +
-	"\x06UserID\x18\x02 \x01(\x03R\x06UserID\"\x8d\x01\n" +
+	"\x06UserID\x18\x02 \x01(\x03R\x06UserID\x12\x18\n" +
+	"\aOrderID\x18\x03 \x01(\x03R\aOrderID\"\x8d\x01\n" +
 	"\x16ReleaseProductResponse\x12\x1c\n" +
 	"\tProductID\x18\x01 \x01(\x03R\tProductID\x12\x18\n" +
 	"\aMessage\x18\x02 \x01(\tR\aMessage\x12;\n" +
